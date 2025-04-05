@@ -1,9 +1,55 @@
-
 {
-    "rewrites": [
+    "version": 2,
+    "builds": [
         {
-            "source": "/(.*)",
-            "destination": "/index.html"
+            "src": "backend/server.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "frontend/build/**",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/return-pet-care",
+            "dest": "backend/server.js"
+        },
+        {
+            "src": "/leave-pet-care",
+            "dest": "backend/server.js"
+        },
+        {
+            "src": "/health",
+            "dest": "backend/server.js"
+        },
+        {
+            "src": "/care/(.*)",
+            "dest": "backend/server.js"
+        },
+        {
+            "src": "/approvedPets",
+            "dest": "backend/server.js"
+        },
+        {
+            "src": "/post-pet",
+            "dest": "backend/server.js"
+        },
+        {
+            "src": "/adopt-pet",
+            "dest": "backend/server.js"
+        },
+        {
+            "src": "/images/(.*)",
+            "dest": "backend/images/$1"
+        },
+        {
+            "src": "/(.*\\.(js|css|svg|png|jpg|jpeg|gif|ico|json)$)",
+            "dest": "frontend/build/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "frontend/build/index.html"
         }
     ]
 }
